@@ -11,7 +11,7 @@ import { PipelineProject } from '@aws-cdk/aws-codebuild';
 import * as ecspatterns from '@aws-cdk/aws-ecs-patterns';
 
 const repoName = "monthly-payslip-with-cdk";
-
+ 
 export class AwsCdkPayslipProgramStack extends cdk.Stack {
 
   public readonly urlOutput: cdk.CfnOutput;
