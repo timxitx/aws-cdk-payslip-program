@@ -115,6 +115,7 @@ export class AwsCdkPayslipProgramStack extends cdk.Stack {
           build: {
             commands: [
               'echo Build started on `date`',
+              'pwd',
               'ls -a',
               'cd monthly-payslip',
               'ls -a',
