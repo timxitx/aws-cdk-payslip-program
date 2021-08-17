@@ -85,7 +85,13 @@ export class AwsCdkPayslipProgramStack extends cdk.Stack {
       environmentVariables: {
         "ECR_REPO": {
           value: ecrRepo.repositoryUriForTag()
-        }
+        },
+        "AWS_ACCOUNT_ID": {
+          value: "837684165413"
+        },
+        "AWS_DEFAULT_REGION": {
+          value: "us-east-2"
+        },
       },
       buildSpec: codebuild.BuildSpec.fromObject({
         version: '0.2',
@@ -111,9 +117,11 @@ export class AwsCdkPayslipProgramStack extends cdk.Stack {
               'echo Build started on `date`',
               'cd monthly-payslip',
               'echo Building Docker Image $ECR_REPO:latest',
-              'docker build -f Dockerfile -t $ECR_REPO:latest .',
-              'echo Tagging Docker Image $ECR_REPO:latest with $ECR_REPO:$IMAGE_TAG',
-              'docker tag $ECR_REPO:latest $ECR_REPO:$IMAGE_TAG',
+              // 'docker build -f Dockerfile -t $ECR_REPO:latest .',
+              // 'echo Tagging Docker Image $ECR_REPO:latest with $ECR_REPO:$IMAGE_TAG',
+              // 'docker tag $ECR_REPO:latest $ECR_REPO:$IMAGE_TAG',
+              'docker build -t $ECR_REPO:$IMAGE_TAG .',
+              'docker tag $ECR_REPO:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPO:$IMAGE_TAG'
             ],
             finally: [
               "echo Done building code"
@@ -122,8 +130,9 @@ export class AwsCdkPayslipProgramStack extends cdk.Stack {
           post_build: {
             commands: [
               'echo Pushing Docker Image to $ECR_REPO:latest and $ECR_REPO:$IMAGE_TAG',
-              'docker push $ECR_REPO:latest',
-              'docker push $ECR_REPO:$IMAGE_TAG'
+              // 'docker push $ECR_REPO:latest',
+              // 'docker push $ECR_REPO:$IMAGE_TAG'
+              'docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPO:$IMAGE_TAG'
             ]
           }
         },
