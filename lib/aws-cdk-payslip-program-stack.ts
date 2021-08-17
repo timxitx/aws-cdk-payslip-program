@@ -115,13 +115,13 @@ export class AwsCdkPayslipProgramStack extends cdk.Stack {
           build: {
             commands: [
               'echo Build started on `date`',
-              'pwd',
+              'ls -a',
               'cd monthly-payslip',
-              'pwd',
+              'ls -a',
               'echo Building Docker Image',
-              'docker build -f Dockerfile -t $ECR_REPO:latest .',
-              'echo Tagging Docker Image $ECR_REPO:latest with $ECR_REPO:$IMAGE_TAG',
-              'docker tag $ECR_REPO:latest $ECR_REPO:$IMAGE_TAG',
+              // 'docker build -f Dockerfile -t $ECR_REPO:latest .',
+              // 'echo Tagging Docker Image $ECR_REPO:latest with $ECR_REPO:$IMAGE_TAG',
+              // 'docker tag $ECR_REPO:latest $ECR_REPO:$IMAGE_TAG',
             ],
             finally: [
               "echo Done building code"
@@ -132,7 +132,7 @@ export class AwsCdkPayslipProgramStack extends cdk.Stack {
               'echo Pushing Docker Image to $ECR_REPO:latest and $ECR_REPO:$IMAGE_TAG',
               // 'docker push $ECR_REPO:latest',
               // 'docker push $ECR_REPO:$IMAGE_TAG'
-              'docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPO:$IMAGE_TAG'
+              // 'docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPO:$IMAGE_TAG'
             ]
           }
         },
