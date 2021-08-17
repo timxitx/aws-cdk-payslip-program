@@ -19,7 +19,7 @@ export class CdkPipelineStack extends Stack {
 
     const sourceAction = new codepipeline_actions.GitHubSourceAction({
         actionName: 'GitHub',
-        owner: 'timxii',
+        owner: 'timxitx',
         repo: 'aws-cdk-payslip-program',
         oauthToken: SecretValue.secretsManager('github-token'),
         output: sourceArtifact,

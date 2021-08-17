@@ -1,5 +1,5 @@
 import { CfnOutput, Construct, Stage, StageProps } from '@aws-cdk/core';
-import { CdkpipelinesDemoStack } from './cdkpipelines-demo-stack';
+import { AwsCdkPayslipProgramStack } from './aws-cdk-payslip-program-stack';
 
 /**
  * Deployable unit of web service app
@@ -10,7 +10,7 @@ export class CdkpipelinesDemoStage extends Stage {
   constructor(scope: Construct, id: string, props?: StageProps) {
     super(scope, id, props);
 
-    const service = new CdkpipelinesDemoStack(this, 'WebService');
+    const service = new AwsCdkPayslipProgramStack(this, 'WebService');
     
     // Expose CdkpipelinesDemoStack's output one level higher
     this.urlOutput = service.urlOutput;
