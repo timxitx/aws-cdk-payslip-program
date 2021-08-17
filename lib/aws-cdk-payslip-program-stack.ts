@@ -33,6 +33,8 @@ export class AwsCdkPayslipProgramStack extends cdk.Stack {
       repositoryName: repoName,
     });
 
+    
+
     var pipelineProject = this.createPipelineProject(ecrRepository);
     pipelineProject.role?.addManagedPolicy(ManagedPolicy.fromAwsManagedPolicyName('AmazonEC2ContainerRegistryPowerUser'));
 
