@@ -175,7 +175,7 @@ export class AwsCdkPayslipProgramStack extends cdk.Stack {
       // listenerPort: 8080,  
       taskImageOptions: {
         containerName: repoName,
-        image: ecs.ContainerImage.fromRegistry("timxii/monthly-payslip:latest"),
+        image: ecs.ContainerImage.fromRegistry("timxii/monthlypayslip:latest"),
         containerPort: 8080,
       },
     });
