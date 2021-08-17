@@ -126,7 +126,7 @@ export class AwsCdkPayslipProgramStack extends cdk.Stack {
             finally: [
               "echo Done building code"
             ],
-          },
+          }, 
           post_build: {
             commands: [
               'echo Pushing Docker Image to $ECR_REPO:latest and $ECR_REPO:$IMAGE_TAG',
@@ -146,6 +146,8 @@ export class AwsCdkPayslipProgramStack extends cdk.Stack {
     return pipelineProject;
   }
 
+
+  
   public createGithubSourceAction(sourceOutput: Artifact, oauthToken: cdk.SecretValue): GitHubSourceAction {
     return new GitHubSourceAction({
       actionName: 'github_source',
