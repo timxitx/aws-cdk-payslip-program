@@ -114,7 +114,7 @@ export class AwsCdkPayslipProgramStack extends cdk.Stack {
           },
           build: {
             commands: [
-              'echo Build started on `date`',
+              'echo Build started on `date`', 
               'echo Building Docker Image',
               'docker build -f Dockerfile -t $ECR_REPO:latest .',
               'echo Tagging Docker Image $ECR_REPO:latest with $ECR_REPO:$IMAGE_TAG',
