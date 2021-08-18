@@ -129,12 +129,16 @@ export class AwsCdkPayslipProgramStack extends cdk.Stack {
               'echo Pushing Docker Image to $ECR_REPO:latest and $ECR_REPO:$IMAGE_TAG',
               'docker push $ECR_REPO:latest',
               'docker push $ECR_REPO:$IMAGE_TAG',
+              "echo creating imagedefinitions.json dynamically",
+              "printf '[{\"name\":\"" + repoName + "\",\"imageUri\": \"" + ecrRepo.repositoryUriForTag() + ":latest\"}]' > imagedefinitions.json",
+              //'XX="$(ls -l /root/.gradle/)"; printf "%s\n" "$XX"',
+              "echo Build completed on `date`"
             ]
           }
         },
         artifacts: {
           files: [
-            "AwsCdkPayslipProgramStack.template.json"
+            "imagedefinitions.json"
           ]
         },
       }),
