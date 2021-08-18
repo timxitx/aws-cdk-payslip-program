@@ -1,0 +1,6 @@
+com/payslipProgram/monthlyPayslip/domain/PaySlip.class
+com/payslipProgram/monthlyPayslip/MonthlyPayslipApplication.class
+com/payslipProgram/monthlyPayslip/service/EmployeeService.class
+com/payslipProgram/monthlyPayslip/controller/MainController.class
+com/payslipProgram/monthlyPayslip/domain/Employee.class
+com/payslipProgram/monthlyPayslip/domain/Threshold.class
