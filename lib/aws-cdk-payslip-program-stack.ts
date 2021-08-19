@@ -61,18 +61,7 @@ export class AwsCdkPayslipProgramStack extends cdk.Stack {
         },
       ],
       pipelineName: "my_pipeline",
-      //artifactBucket: artifactBucket
     });
-
-    // Create a load-balanced Fargate service and make it public
-    // new ecs_patterns.ApplicationLoadBalancedFargateService(this, "MyFargateService", {
-    //   cluster: cluster, // Required
-    //   cpu: 256, // Default is 256
-    //   desiredCount: 1, // Default is 1
-    //   taskImageOptions: { image: ecs.ContainerImage.fromRegistry("amazon/amazon-ecs-sample") },
-    //   memoryLimitMiB: 512, // Default is 512
-    //   publicLoadBalancer: true // Default is false
-    // });
   }
 
   private createPipelineProject(ecrRepo: ecr.Repository): codebuild.PipelineProject {
